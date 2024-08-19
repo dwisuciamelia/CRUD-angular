@@ -1,0 +1,107 @@
+<h4 mat-dialog-title>Edit User</h4>
+<mat-dialog-content>
+  <div class="flex flex-col space-y-3">
+    <div>
+      <label
+        for="firstname"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >First Name</label
+      >
+      <input
+        type="text"
+        id="firstname"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Firstname"
+        required
+        [(ngModel)]="user.firstName"
+        #firstname="ngModel"
+      />
+      <div *ngIf="firstname.invalid && firstname.touched">
+        <div
+          *ngIf="firstname.errors?.['required']"
+          class="text-red-500 px-1 text-xs"
+        >
+          Firstname is required
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900"
+        >Last Name</label
+      >
+      <input
+        type="text"
+        id="lastname"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="lastname"
+        required
+        [(ngModel)]="user.lastName"
+        #lastname="ngModel"
+      />
+      <div *ngIf="lastname.invalid && lastname.touched">
+        <div
+          *ngIf="lastname.errors?.['required']"
+          class="text-red-500 px-1 text-xs"
+        >
+          Lastname is required
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900"
+        >Email</label
+      >
+      <input
+        type="text"
+        id="email"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="email"
+        required
+        [(ngModel)]="user.email"
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && email.touched">
+        <div
+          *ngIf="email.errors?.['required']"
+          class="text-red-500 px-1 text-xs"
+        >
+          Email is required
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label
+        for="role"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Role</label
+      >
+      <select
+        id="role"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [(ngModel)]="user.role"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option *ngFor="let x of roleData" [value]="x.desc">
+          {{ x.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div class="mb-3 space-x-2">
+    <button class="bg-gray-300 px-3 py-2 rounded-lg" mat-dialog-close>
+      Cancel
+    </button>
+    <button
+      class="bg-yellow-400 px-3 py-2 rounded-lg"
+      [mat-dialog-close]="true"
+      (click)="updateUser()"
+    >
+      Save
+    </button>
+  </div>
+</mat-dialog-actions>

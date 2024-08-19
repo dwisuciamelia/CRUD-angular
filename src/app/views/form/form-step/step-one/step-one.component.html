@@ -1,0 +1,80 @@
+<ng-container [formGroup]="stepForm">
+  <div class="px-4 py-3">
+    <div class="flex flex-col space-y-3">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">
+          Email<span class="text-red-700">*</span>
+        </label>
+        <input
+          type="text"
+          id="email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          formControlName="email"
+          [ngClass]="{
+            'border-red-600 focus:ring-red-600 focus:border-red-600':
+              stepForm.controls['email'].invalid &&
+              stepForm.controls['email'].touched
+          }"
+        />
+        <div
+          *ngIf="
+            stepForm.controls['email'].invalid &&
+            stepForm.controls['email'].touched
+          "
+        >
+          <div
+            *ngIf="stepForm.controls['email'].errors?.['required']"
+            class="text-red-700"
+          >
+            Email is required
+          </div>
+          <div
+            *ngIf="stepForm.controls['email'].errors?.['email']"
+            class="text-red-700"
+          >
+            Please enter a valid email
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="password"
+          class="block mb-2 text-sm font-medium text-gray-900"
+        >
+          Password<span class="text-red-700">*</span>
+        </label>
+        <input
+          type="password"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          formControlName="password"
+          [ngClass]="{
+            'border-red-600 focus:ring-red-600 focus:border-red-600':
+              stepForm.controls['password'].invalid &&
+              stepForm.controls['password'].touched
+          }"
+        />
+        <div
+          *ngIf="
+            stepForm.controls['password'].invalid &&
+            stepForm.controls['password'].touched
+          "
+        >
+          <div
+            *ngIf="stepForm.controls['password'].errors?.['required']"
+            class="text-red-700"
+          >
+            Password is required
+          </div>
+          <div
+            *ngIf="stepForm.controls['password'].errors?.['minlength']"
+            class="text-red-700"
+          >
+            Password must have 8 characters
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

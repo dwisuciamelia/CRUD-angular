@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" class="sidenav-content" [(opened)]="opened">
+    <mat-nav-list class="space-y-3">
+      @for (link of navItems; track link) {
+      <a
+        [routerLink]="link.route"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [activated]="rla.isActive"
+        mat-list-item
+      >
+        <div class="flex space-x-2 items-center">
+          <mat-icon
+            [svgIcon]="link.icon"
+            aria-hidden="false"
+            aria-label="Example thumbs up SVG icon"
+          ></mat-icon>
+
+          <p class="text-sm font-bold pt-3">{{ link.name }}</p>
+        </div>
+      </a>
+      }
+      <button
+        mat-icon-button
+        color="accent"
+        aria-label="Example icon button with a menu icon"
+        (click)="logout()"
+      >
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="px-8 py-4">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

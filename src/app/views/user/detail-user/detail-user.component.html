@@ -1,0 +1,36 @@
+<p mat-dialog-title>
+  <span class="text-lg font-bold">Detail User</span>
+</p>
+<mat-dialog-content>
+  <table
+    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+  >
+    <tbody
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+    >
+      <tr>
+        <td class="px-6 py-4">First name</td>
+        <td class="px-6 py-4">{{ user.firstName }}</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4">Last name</td>
+        <td class="px-6 py-4">{{ user.lastName }}</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4">email</td>
+        <td class="px-6 py-4">{{ user.email }}</td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4">Role</td>
+        <td class="px-6 py-4">{{ user.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="mb-3 space-x-2">
+    <button class="bg-gray-300 px-3 py-2 rounded-lg" mat-dialog-close>
+      Cancel
+    </button>
+  </div>
+</mat-dialog-actions>

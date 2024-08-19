@@ -1,0 +1,27 @@
+.sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+.sidenav-content {
+    width: 15%;
+}
+.mat-mdc-nav-list .mat-mdc-list-item {
+    border-radius: 0%;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+
+.active-link-item {
+    background-color: grey;
+}
+
+/* .container {
+    display: flex;
+    align-items: center;
+  } */
+  

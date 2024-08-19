@@ -1,0 +1,15 @@
+<div>
+  <form>
+    <ng-container [formGroup]="stepForm" name="stepForm">
+      <app-step-one
+        *ngIf="activeStep$ == 1"
+        formGroupName="personalDetails"
+      ></app-step-one>
+      <app-step-two
+        *ngIf="activeStep$ == 2"
+        formGroupName="information"
+      ></app-step-two>
+    </ng-container>
+  </form>
+  <app-progression-button></app-progression-button>
+</div>

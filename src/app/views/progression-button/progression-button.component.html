@@ -1,0 +1,23 @@
+<div class="container">
+  <button
+    class="bg-yellow-300 px-3 py-2"
+    *ngIf="activeStep$ > 1"
+    (click)="goBack()"
+  >
+    Go Back
+  </button>
+  <button
+    class="bg-green-500 px-3 py-2"
+    *ngIf="activeStep$ < 2"
+    (click)="nextStep()"
+  >
+    Next Step
+  </button>
+  <button
+    class="bg-blue-600 px-3 py-2"
+    *ngIf="activeStep$ == 2"
+    (click)="submit()"
+  >
+    Submit
+  </button>
+</div>

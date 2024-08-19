@@ -1,0 +1,155 @@
+<h2 mat-dialog-title class="text-sm">Add New User</h2>
+<mat-dialog-content class="">
+  <form class="px-4 py-3">
+    <div class="flex flex-col space-y-3">
+      <div>
+        <label
+          for="firstname"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >First Name<span class="text-xs text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="firstname"
+          class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Firstname"
+          required
+          [(ngModel)]="user.firstName"
+          [ngModelOptions]="{ standalone: true }"
+          #firstname="ngModel"
+        />
+        <div *ngIf="firstname.invalid && firstname.touched">
+          <div
+            *ngIf="firstname.errors?.['required']"
+            class="text-red-500 px-1 text-xs"
+          >
+            Firstname is required
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="lastname"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Last Name<span class="text-xs text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="lastname"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Lastname"
+          required
+          [(ngModel)]="user.lastName"
+          [ngModelOptions]="{ standalone: true }"
+          #lastname="ngModel"
+        />
+        <div *ngIf="lastname.invalid && lastname.touched">
+          <div
+            *ngIf="lastname.errors?.['required']"
+            class="text-red-500 px-1 text-xs"
+          >
+            Lastname is required
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="email"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Email<span class="text-xs text-red-700">*</span></label
+        >
+        <input
+          type="text"
+          id="email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="mail@example.com"
+          required
+          [email]="true"
+          [(ngModel)]="user.email"
+          [ngModelOptions]="{ standalone: true }"
+          #email="ngModel"
+        />
+        <div *ngIf="email.invalid && email.touched">
+          <div
+            *ngIf="email.errors?.['required']"
+            class="text-red-500 px-1 text-xs"
+          >
+            Email is required
+          </div>
+          <div
+            *ngIf="email.errors?.['email']"
+            class="text-red-500 px-1 text-xs"
+          >
+            Please enter a valid email
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="password"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Password<span class="text-xs text-red-700">*</span></label
+        >
+        <input
+          type="password"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          minlength="8"
+          [(ngModel)]="user.password"
+          [ngModelOptions]="{ standalone: true }"
+          #password="ngModel"
+        />
+        <div *ngIf="password.invalid && password.touched">
+          <div
+            *ngIf="password.errors?.['required']"
+            class="text-red-500 px-1 text-xs"
+          >
+            Password is required
+          </div>
+          <div
+            *ngIf="password.errors?.['minlength']"
+            class="text-red-500 px-1 text-xs"
+          >
+            Password must have 8 characters
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="role"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Role</label
+        >
+        <select
+          id="role"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="user.role"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <option *ngFor="let x of roleData" [value]="x.desc">
+            {{ x.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div class="mb-3 space-x-2">
+    <button class="bg-gray-300 px-3 py-2 rounded-lg" mat-dialog-close>
+      Cancel
+    </button>
+    <button
+      class="bg-green-700 px-3 py-2 rounded-lg"
+      [mat-dialog-close]="true"
+      (click)="saveUser()"
+    >
+      Save
+    </button>
+  </div>
+</mat-dialog-actions>
